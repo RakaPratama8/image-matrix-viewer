@@ -6,7 +6,13 @@ import io
 
 
 def main():
-    img_uploaded = st.file_uploader("Upload image here!", type=["jpg", "jpeg", "png"],
+    st.title("Image Matrix Viewer")
+    st.markdown(
+        """
+        :red[Muhamad Raka Pratama, 50422956]
+        """
+    )
+    img_uploaded = st.file_uploader("Upload your image here!", type=["jpg", "jpeg", "png"],
                                     accept_multiple_files=False)
     
     column1, column2 = st.columns(2)
@@ -26,7 +32,7 @@ def main():
         st.dataframe(table_datas)
         
         with column1:
-            st.image(img_np, caption=f"{img_uploaded.name}", use_container_width="always")
+            st.image(img_np, caption=f"{img_uploaded.name}", width="content")
         with column2:
             x, y = st.number_input("Input x value", step=1, min_value=0, max_value=img_np.shape[0]-1), st.number_input("Input y value", step=1, min_value=0, max_value=img_np.shape[0]-1)
             
